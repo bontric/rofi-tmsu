@@ -7,7 +7,12 @@ This is a small script to integrate [TMSU](https://github.com/oniony/TMSU) with 
 + `TMSU_DB` : Set the location of your TMSU database (**Full path!**)
 
 ### Set Up (i3)
-Simply add:
+Make the script executable:
+```sh
+chmod +x rofi-tmsu.sh
+```
+
+Add:
 ```sh
 bindsym $mod+Shift+d exec rofi -modi "tmsu:/path/to/rofi-tmsu.sh" -show tmsu
 ```                                                                     
