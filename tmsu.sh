@@ -1,24 +1,25 @@
 #!/usr/bin/env bash
 
-OPEN=xdg-open 
+OPEN=xdg-open
 CWD="/"
 TMSU_DB="/path/to/.tmsu/db"
 
-# Tags are not allowed to contain a /
-if [[ "$@" == */* ]]; then
-    coproc ( $OPEN $@ )
-    exit;
-fi
+builtin cd $CWD
 
-# Show all available tags initaly
 if [ "$#" -le 0 ]; then
+    builtin cd $CWD
     tmsu -D $TMSU_DB tags
-else
-    cd $CWD
-    FILES=$(tmsu -D $TMSU_DB files "$@") ;
+
+elif [[ ${COUNT:0:1} -ne 0 ]]; then
+    FILES=$(tmsu -D $TMSU_DB files "$@")
     if [[ ! -z $FILES ]]; then
-        echo $FILES | tr " " "\n"
+        builtin echo $FILES | tr " " "\n"
     else
         tmsu -D $TMSU_DB tags
     fi
+elif [[ -f $@ ]]; then
+    coproc ( $OPEN $@ )
+    exit;
+else
+    tmsu -D $TMSU_DB tags
 fi
