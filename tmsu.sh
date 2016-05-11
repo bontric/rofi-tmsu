@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-OPEN=xdg-open #Open selected Files with this
+OPEN=xdg-open 
 CWD="/"
 TMSU_DB="/path/to/.tmsu/db"
 
