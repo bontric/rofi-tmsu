@@ -6,6 +6,8 @@ TMSU_DB="/path/to/.tmsu/db"
 
 builtin cd $CWD
 
+COUNT=$(tmsu files -D $TMSU_DB --count "$@")
+
 if [ "$#" -le 0 ]; then
     builtin cd $CWD
     tmsu -D $TMSU_DB tags
