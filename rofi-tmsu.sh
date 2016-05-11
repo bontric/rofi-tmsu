@@ -5,7 +5,6 @@ CWD="/"
 TMSU_DB="/path/to/.tmsu/db"
 
 if [ "$#" -le 0 ]; then
-    builtin cd $CWD
     tmsu -D $TMSU_DB tags
     exit;
 fi
