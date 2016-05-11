@@ -4,7 +4,6 @@ OPEN=xdg-open
 CWD="/"
 TMSU_DB="/path/to/.tmsu/db"
 
-# Tags are not allowed to contain a /
 if [[ "$@" == */* ]]; then
     coproc ( $OPEN $@ )
     exit;
