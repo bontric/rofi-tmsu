@@ -1,11 +1,11 @@
 # rofi-tmsu
-This is a small script to integrate [TMSU](https://github.com/oniony/TMSU) with [rofi](https://davedavenport.github.io/rofi//index.html). It uses rofi with the dmenu option.
+This is a small script to integrate [TMSU](https://github.com/oniony/TMSU) with [rofi](https://davedavenport.github.io/rofi//index.html).
 
 ### Configure
 + `OPEN` :  Set Program to open files (Default [xdg-open](http://linux.die.net/man/1/xdg-open))
 + `TMSU_DB` : Set the location of your TMSU database (**Full path!**)
-+ `TMSU_CMD` : custom TMSU command
-+ `ROFI_CMD` : custom ROFI command
++ `TMSU_CMD` : Custom TMSU command
++ `ROFI_CMD` : Custom ROFI command
 
 ### Set Up (i3)
 Make the script executable:
