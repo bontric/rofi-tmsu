@@ -1,28 +1,27 @@
 #!/usr/bin/env bash
 
 OPEN=xdg-open
-CWD="/"
 TMSU_DB="/path/to/.tmsu/db"
 
+TMSU_CMD="tmsu -D $TMSU_DB"
+ROFI_CMD="rofi -dmenu"
 
 function gen_tags()
 {
-        tmsu -D $TMSU_DB tags
+        $TMSU_CMD tags
 }
 
 function files()
 {
-    for i in ${FILES[@]}; do
-        echo $(basename $i);
-    done
+    basename -a $FILES
 }
 
 function file_selection()
 {
-    FILES=$(tmsu -D $TMSU_DB files "$TAGS")
+    FILES=$($TMSU_CMD files "$TAGS")
 
     if [ ! -z "$FILES" ]; then
-        SEL=$( files  | rofi -dmenu -p "Select File:")
+        SEL=$( files  | $ROFI_CMD -p "Select File:")
 
         if [ ! -z "$SEL"  ]; then
             for i in ${FILES[@]}; do
@@ -38,13 +37,13 @@ function file_selection()
 
 function show_selection()
 {
-    TAGS=$( gen_tags  | rofi -dmenu -p "Select Tag(s):")
+    TAGS=$( gen_tags  | $ROFI_CMD -p "Select Tag(s):")
 
     if [ "$TAGS" = "" ]; then
         exit;
     fi
 
-    COUNT=$(tmsu files -D $TMSU_DB --count "$TAGS")
+    COUNT=$($TMSU_CMD files --count "$TAGS")
 
     if [[ ${COUNT:0:1} -ne 0 ]]; then
         file_selection
